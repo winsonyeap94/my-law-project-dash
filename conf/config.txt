@@ -1,0 +1,2 @@
+[database]
+con = sqlite:///db/dash_sqlite.db

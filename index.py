@@ -1,17 +1,15 @@
+import base64
+import sd_material_ui as sdmui
 import dash_core_components as dcc
 import dash_html_components as html
-from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
-import sd_material_ui as sdmui
-import base64
+from dash.dependencies import Input, Output
 
 from app import app, server
 
 from callbacks import *
 from views import (
-    login, error, home, profile
-    
-    , page2
+    error, home, warehouse, campaign
 )
 
 navBar = dbc.Navbar(
@@ -25,7 +23,7 @@ navBar = dbc.Navbar(
 ################################################################################
 # TITLE TO BE SHOWN ON BROWSER TAB
 ################################################################################
-app.title = "My LAW Project"
+app.title = "LAW Optimisation Project"
 
 ################################################################################
 # GENERAL LAYOUT
@@ -46,27 +44,16 @@ app.layout = html.Div([
               [Input('url', 'pathname')])
 def displayPage(pathname):
     if pathname == '/':
-        
         return home.layout
-        
-
-    
 
     if pathname == '/home':
-        
         return home.layout
-        
 
-    
-    if pathname == '/page-2':
-        
-        return page2.layout
-        
-    
+    if pathname == '/warehouse':
+        return warehouse.layout
 
-    
-
-    
+    if pathname == '/campaign':
+        return campaign.layout
 
     else:
         return error.layout
@@ -79,7 +66,7 @@ def displayPage(pathname):
     Output('navBar', 'children'),
     [Input('pageContent', 'children')])
 def navBar(input1):
-    logo_png = './assets/MyLAWProject.png'
+    logo_png = './assets/MyDashApp.png'
     logo_base64 = base64.b64encode(open(logo_png, 'rb').read()).decode('ascii')
 
     # Left side of Navbar
@@ -90,14 +77,14 @@ def navBar(input1):
                          style={'-webkit-filter': 'drop-shadow(2px 2px 1px #222)',
                                 'filter': 'drop-shadow(2px 2px 1px #222)',
                                 'margin-left': '3em'}),
-                dbc.NavbarBrand("My LAW Project", className="navbar-header"),
-                sdmui.Button(dbc.NavLink('Home', href='/home', className='p-1', style={'color': '#FFFFFF'}),
+                dbc.NavbarBrand("LAW Optimisation Project", className="navbar-header", style={'color': '#222222'}),
+                sdmui.Button(dbc.NavLink('Home', href='/home', className='p-1', style={'color': '#222222'}),
                              className='ml-4 mr-2', variant='text'),
-                
-                sdmui.Button(dbc.NavLink('Page 2', href='/page-2', className='p-1', style={'color': '#FFFFFF'}),
+                sdmui.Button(dbc.NavLink('Warehouse Optimisation', href='/warehouse', className='p-1',
+                                         style={'color': '#222222'}),
                              className='mr-2', variant='text'),
-                
-                sdmui.Button(dbc.NavLink('Profile', href='/profile', className='p-1', style={'color': '#FFFFFF'}),
+                sdmui.Button(dbc.NavLink('Campaign Optimisation', href='/campaign', className='p-1',
+                                         style={'color': '#222222'}),
                              className='mr-2', variant='text'),
             ], align='center')
         ], width=10),

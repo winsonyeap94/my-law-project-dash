@@ -10551,3 +10551,12 @@ table-primary, table-secondary, table-success, table-info, table-warning, table-
 .list-group {
   font-size: 0.930125rem;
 }
+
+/* Campaign */
+.campaign-btn {
+    width: 15em;
+}
+
+.campaign-card {
+    text-align: center;
+}

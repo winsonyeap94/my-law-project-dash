@@ -9,7 +9,7 @@ from app import app
 from src.viz import *
 from conf import loguru_logger as _logger
 
-API_URL = "http://localhost:6128/run_optimisation/"
+API_URL = "http://my-law-network:6128/run_optimisation/"
 
 
 # ====================================================================================================

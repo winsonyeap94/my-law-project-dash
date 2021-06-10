@@ -68,7 +68,7 @@ layout = dbc.Container([
                     # Despatch Volume Limit
                     html.H6("Despatch Volume Limit"),
                     dbc.InputGroup([
-                        dbc.Input(id='warehouse-input-despatch-volume-limit', value=2000, type='number'),
+                        dbc.Input(id='warehouse-input-despatch-volume-limit', value=20, type='number'),
                         dbc.InputGroupAddon("ft3", addon_type='append'),
                     ], className='mb-3', size='sm'),
                     # Working Hours Per Day
@@ -94,9 +94,13 @@ layout = dbc.Container([
     # ============================== Bottom Section: Results ==============================
     html.Br(),
     dbc.Row([
-        html.Div([
-            dcc.Graph(id='geo_viz_warehouse', config={'displayModeBar': False}),
-        ])
+        dbc.Col([
+            dcc.Loading([
+                html.Div([
+                    dcc.Graph(id='geo_viz_warehouse', config={'displayModeBar': False}),
+                ], style={'height': '100vh', 'width': '100%'})
+            ], type='cube'),
+        ]),
     ]),
     html.Br(),
     html.Div(id='debug-msg')

@@ -1,6 +1,6 @@
 FROM python:3.8.10-slim-buster
 
-LABEL maintainer "My LAW Project"
+LABEL maintainer="My LAW Project"
 
 # Keeps Python from generating .pyc files in the container
 ENV PYTHONDONTWRITEBYTECODE=1

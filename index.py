@@ -9,7 +9,7 @@ from app import app, server
 
 from callbacks import *
 from views import (
-    error, home, warehouse, campaign
+    error, home, warehouse_overview, warehouse, campaign, campaign_overview
 )
 
 navBar = dbc.Navbar(
@@ -49,8 +49,14 @@ def displayPage(pathname):
     if pathname == '/home':
         return home.layout
 
+    if pathname == '/warehouse-overview':
+        return warehouse_overview.layout
+
     if pathname == '/warehouse':
         return warehouse.layout
+
+    if pathname == '/campaign-overview':
+        return campaign_overview.layout
 
     if pathname == '/campaign':
         return campaign.layout
@@ -80,7 +86,13 @@ def navBar(input1):
                 dbc.NavbarBrand("LAW Optimisation Project", className="navbar-header", style={'color': '#222222'}),
                 sdmui.Button(dbc.NavLink('Home', href='/home', className='p-1', style={'color': '#222222'}),
                              className='ml-4 mr-2', variant='text'),
+                sdmui.Button(dbc.NavLink('Warehouse Problem Overview', href='/warehouse-overview', className='p-1',
+                                         style={'color': '#222222'}),
+                             className='mr-2', variant='text'),
                 sdmui.Button(dbc.NavLink('Warehouse Optimisation', href='/warehouse', className='p-1',
+                                         style={'color': '#222222'}),
+                             className='mr-2', variant='text'),
+                sdmui.Button(dbc.NavLink('Campaign Problem Overview', href='/campaign-overview', className='p-1',
                                          style={'color': '#222222'}),
                              className='mr-2', variant='text'),
                 sdmui.Button(dbc.NavLink('Campaign Optimisation', href='/campaign', className='p-1',

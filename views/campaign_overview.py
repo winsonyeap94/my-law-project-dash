@@ -17,8 +17,11 @@ layout = dbc.Container([
     html.Br(),
 
     dbc.Card([
-        html.Img(src=app.get_asset_url('Warehouse Optimisation - Slide 1.png'), className='center', style={'width': '80%'}),
-        html.Img(src=app.get_asset_url('Warehouse Optimisation - Slide 2.png'), className='center', style={'width': '80%'}),
+        html.Img(src=app.get_asset_url('Campaign Optimisation - Slide 1.png'), className='center', style={'width': '80%'}),
+        html.Br(),
+        html.Br(),
+        html.Br(),
+        html.Img(src=app.get_asset_url('Campaign Optimisation - Slide 2.png'), className='center', style={'width': '80%'}),
     ], body=True)
 
 ], className="mt-4")
